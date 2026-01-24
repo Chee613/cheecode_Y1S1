@@ -1,4 +1,5 @@
 package Lab.Lab9;
+import java.util.Scanner;
 
 public class L9Q4 {
     public static void playDinoGame1(){
@@ -46,7 +47,15 @@ public class L9Q4 {
     }
     
     public static void main(String[] args) {
-//        playDinoGame1();
-        playDinoGame2();
+        Scanner input=new Scanner(System.in);
+
+        System.out.println("There two mode of dice game.");
+        System.out.println("Pick mode 1 or mode 2");
+        int mode=input.nextInt();
+
+        if(mode==1)
+            playDinoGame1();
+        else
+            playDinoGame2();
     }
 }
