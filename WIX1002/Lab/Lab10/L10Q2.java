@@ -100,6 +100,7 @@ class SubstitutionCiper implements MessageEncoder{
         
         System.out.println("Decrypted Text: " + decryptedMessage.toString());
         writeFile(decryptedMessage.toString());
+        
     }
 }
 
