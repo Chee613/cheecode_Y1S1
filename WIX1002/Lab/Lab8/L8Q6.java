@@ -1,72 +1,66 @@
 package Lab.Lab8;
+class BurgerStall {
+    // Instance variables: Unique to each individual stall
+    private String stallId;
+    private int burgersSold;
 
-class BurgerStall{
-    private String name;
-    private String ID;
-    private int numberOfBurger;
-    
-    public BurgerStall(){
-        this.name = null;
-        this.ID = null;
-        this.numberOfBurger = 0;        
-    }
-    
-    public BurgerStall(String name, String ID, int numberOfBurger){
-        this.name = name;
-        this.ID = ID;
-        this.numberOfBurger = numberOfBurger;        
-    }
-    
-    public String getName(){
-        return this.name;
-    }
-    
-    public void setName(String name){
-        this.name = name;
-    }
-    
-    public String getID(){
-        return this.ID;
-    }
-    
-    public void setID(String ID){
-        this.ID = ID;
-    }
-    
-    public int getNumberOfBurger(){
-        return this.numberOfBurger;
-    }
-    
-    public void setNumberOfBurger(int numberOfBurger){
-        this.numberOfBurger = numberOfBurger;
-    }
-    
-    public void increaseBurgerSales(int noSales){
-        this.numberOfBurger += noSales;
-    }
-    
-    public String display(){
-        return "Name : " + this.name
-                + "\n" + "ID : " + this.ID
-                + "\n" + "Number of burger sold : " + this.numberOfBurger;
-    }
-    
-}
+    // Static variable: Shared across all instances of the class
+    private static int totalBurgersSoldAllStalls = 0;
 
-public class L8Q6 {
+    // Constructor to initialize the stall ID and set initial sales to 0
+    public BurgerStall(String stallId) {
+        this.stallId = stallId;
+        this.burgersSold = 0;
+    }
+
+    // Method to increment burger sales for a specific stall
+    public void sold(int amount) {
+        if (amount > 0) {
+            this.burgersSold += amount;
+            // Also update the global counter
+            totalBurgersSoldAllStalls += amount;
+        }
+    }
+
+    // Getters
+    public String getStallId() {
+        return stallId;
+    }
+
+    public int getBurgersSold() {
+        return burgersSold;
+    }
+
+    // Static method to get the grand total across all stalls
+    public static int getTotalBurgersSoldAllStalls() {
+        return totalBurgersSoldAllStalls;
+    }
+
+    // Main method to demonstrate functionality
     public static void main(String[] args) {
-        BurgerStall stall1 = new BurgerStall("Al-Ehsan", "01", 2);
-        BurgerStall stall2 = new BurgerStall("Al-Safuan", "02", 4);
+        // Create three different stalls
+        BurgerStall stall1 = new BurgerStall("STALL-001");
+        BurgerStall stall2 = new BurgerStall("STALL-002");
+        BurgerStall stall3 = new BurgerStall("STALL-003");
+
+        // Simulate sales
+        stall1.sold(50);
+        stall2.sold(30);
+        stall3.sold(45);
+        stall1.sold(10); // Adding more to stall 1
+
+        // Display results
+        System.out.println("--- Daily Burger Sales Report ---");
+        displayStallInfo(stall1);
+        displayStallInfo(stall2);
+        displayStallInfo(stall3);
         
-        stall1.increaseBurgerSales(10);
-        stall2.increaseBurgerSales(5);
-        
-        System.out.println(stall1.display());
-        System.out.println();
-        System.out.println(stall2.display());
-        
-        System.out.println("Total number of burgers sold in all stalls : " 
-                + (stall1.getNumberOfBurger() + stall2.getNumberOfBurger())); 
-        
+        System.out.println("---------------------------------");
+        System.out.println("Total Burgers Sold (All Stalls): " + BurgerStall.getTotalBurgersSoldAllStalls());
+    }
+
+    // Helper method for clean printing
+    public static void displayStallInfo(BurgerStall stall) {
+        System.out.println("Stall ID: " + stall.getStallId() + " | Sold: " + stall.getBurgersSold());
     }
 }
