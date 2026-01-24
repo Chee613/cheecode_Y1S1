@@ -1,13 +1,9 @@
 package Lab.Lab10;
 
-import java.io.BufferedWriter;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
-class ShuffleCipher implements MessageEncoder{
+class ShuffleCipher implements MessageEncoder {
+
     private String inputFileName;
     private String outputFileName;
     private int N;
@@ -17,154 +13,108 @@ class ShuffleCipher implements MessageEncoder{
         this.outputFileName = outputFileName;
         this.N = N;
     }
-    
-    public String readFile(){
+
+    // ===== READ FILE =====
+    private String readFile(String fileName) {
         String text = "";
-        try{
-            BufferedReader in = new BufferedReader(new FileReader("WIX1002/Lab/Lab10/"+inputFileName));
+        try (BufferedReader in = new BufferedReader(new FileReader("Lab/Lab10/" + fileName))) {
             text = in.readLine();
-//            System.out.println("Text: " + text);
-            in.close();
-            return text;
-        } catch (FileNotFoundException e){
-            System.out.println("File Not Found");
-        } catch (IOException e){
-            System.out.println("Problem with input");
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + fileName);
         }
-        
         return text;
     }
-    
-    // Overload
-    public String readFile(String inputFileName){
-        String text = "";
-        try{
-            BufferedReader in = new BufferedReader(new FileReader("src/Week12/"+inputFileName));
-            text = in.readLine();
-//            System.out.println("Text: " + text);
-            in.close();
-            return text;
-        } catch (FileNotFoundException e){
-            System.out.println("File Not Found");
-        } catch (IOException e){
-            System.out.println("Problem with input");
-        }
-        
-        return text;
-    }
-    
-    public void writeFile(String text){
-        try{
-            BufferedWriter out = new BufferedWriter(new FileWriter("src/Week12/"+outputFileName));
+
+    // ===== WRITE FILE =====
+    private void writeFile(String text) {
+        try (BufferedWriter out = new BufferedWriter(new FileWriter("Lab/Lab10/" + outputFileName))) {
             out.write(text);
-            System.out.println("File Written Successfully");
-            out.close();
-        } catch (FileNotFoundException e){
-            System.out.println("File Not Found");
-        } catch (IOException e){
-            System.out.println("Problem with input");
+            System.out.println("File Written Successfully: " + outputFileName);
+        } catch (IOException e) {
+            System.out.println("Error writing file: " + outputFileName);
         }
     }
-    
-    // base initiator
-    public void encode(){
-        String text = readFile();
-        System.out.println("Text: " + text);
+
+    // ===== SHUFFLE ONCE =====
+    private String shuffleOnce(String text) {
+        if (text.length() <= 1) return text;
+
+        int mid = text.length() / 2;
+        String first = text.substring(0, mid);
+        String second = text.substring(mid);
+
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < first.length(); i++) {
+            result.append(first.charAt(i));
+            if (i < second.length()) result.append(second.charAt(i));
+        }
+
+        return result.toString();
+    }
+
+    // ===== CYCLE LENGTH =====
+    private int cycleLength(int length) {
+        return Math.max(1, (length / 2) - 1); // avoid zero
+    }
+
+    // ===== ENCODE =====
+    @Override
+    public void encode(String plainText) {
+        String text = plainText;
+        int cycle = cycleLength(text.length());
+        int effectiveN = N % cycle;
+
+        for (int i = 0; i < effectiveN; i++) {
+            text = shuffleOnce(text);
+        }
+
+        writeFile(text);
+        System.out.println("Encrypted Message: " + text);
+    }
+
+    @Override
+    public void encode() {
+        String text = readFile(inputFileName);
         encode(text);
-        System.out.println();
-        encodeRecursive(N-1);
     }
-    
-    public void encodeRecursive(int N){
-        // read from the outputFile again
-        String text = readFile(outputFileName);
-        
-        if(N > 0) {
 
-            System.out.println("Text: " + text);
-            encode(text);
-            System.out.println();
-            encodeRecursive(N-1);
+    // ===== DECODE =====
+    @Override
+    public void decode(String cipherText) {
+        String text = cipherText;
+        int cycle = cycleLength(text.length());
+        int effectiveN = N % cycle;
+        int decodeTimes = (cycle - effectiveN) % cycle;
+
+        for (int i = 0; i < decodeTimes; i++) {
+            text = shuffleOnce(text);
         }
+
+        writeFile(text);
+        System.out.println("Decrypted Message: " + text);
     }
-    
-    public void encode(String plainText){
-        System.out.println("Plain Text: " + plainText);
-        StringBuilder encryptedMessage = new StringBuilder();
-        
-        if(plainText.length() > 3){
-            // find the half index
-            int halfIndex = plainText.length() / 2;
-            for (int i = 0; i < halfIndex; i++) {
-                encryptedMessage.append(plainText.charAt(i));
-                encryptedMessage.append(plainText.charAt(i+halfIndex));
-            }
-        } else {
-            // no changes
-            encryptedMessage.append(plainText);
-        }
-        
-        // if odd length then add the last one to the end
-        if(plainText.length() % 2 == 1)
-            encryptedMessage.append(plainText.charAt(plainText.length()-1));
-        
-        System.out.println("Encrypted Text: " + encryptedMessage.toString());
-        writeFile(encryptedMessage.toString());
-    }
-    
-    // base initiator
-    public void decode(){
-        String text = readFile();
-        System.out.println("Text: " + text);
+
+    @Override
+    public void decode() {
+        String text = readFile(inputFileName);
         decode(text);
-        System.out.println();
-        decodeRecursive(text.length()/2 - (N % (text.length()/2 - 1) - 1));
     }
-    
-    public void decodeRecursive(int N){
-        // read from the outputFile again
-        String text = readFile(outputFileName);
-        
-        if(N > 0) {
-
-            System.out.println("Text: " + text);
-            decode(text);
-            System.out.println();
-            decodeRecursive(N-1);
-        }
-    }
-    
-    public void decode(String cipherText){
-        System.out.println("cipher Text: " + cipherText);
-        StringBuilder decryptedMessage = new StringBuilder();
-        
-        if(cipherText.length() > 3){
-            // find the half index
-            int halfIndex = cipherText.length() / 2;
-            for (int i = 0; i < halfIndex; i++) {
-                decryptedMessage.append(cipherText.charAt(i));
-                decryptedMessage.append(cipherText.charAt(i+halfIndex));
-            }
-        } else {
-            // no changes
-            decryptedMessage.append(cipherText);
-        }
-        
-        // if odd length then add the last one to the end
-        if(cipherText.length() % 2 == 1)
-            decryptedMessage.append(cipherText.charAt(cipherText.length()-1));
-        
-        System.out.println("Decrypted Text: " + decryptedMessage.toString());
-        writeFile(decryptedMessage.toString());
-    }
-    
 }
 
 public class L10Q3 {
     public static void main(String[] args) {
-        MessageEncoder encrypt = new ShuffleCipher("messageSend.txt", "messageReceived.txt", 10);
-        encrypt.encode();
-        MessageEncoder decrypt = new ShuffleCipher("messageReceived.txt", "messageSend.txt", 10);
-        decrypt.decode();
+
+        int N = 10; // number of shuffles
+
+        // ==== ENCODE ====
+        MessageEncoder encoder = new ShuffleCipher("messageSend.txt", "messageReceived.txt", N);
+        encoder.encode();
+
+        // ==== DECODE ====
+        MessageEncoder decoder = new ShuffleCipher("messageReceived.txt", "messageSend.txt", N);
+        decoder.decode();
+
+        System.out.println("Encoding and decoding completed successfully!");
     }
 }
