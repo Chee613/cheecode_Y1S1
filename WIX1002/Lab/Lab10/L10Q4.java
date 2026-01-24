@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.io.File;
 
 interface Searchable{
     boolean search(LocalDateTime dateStartTime, LocalDateTime dateEndTime);
@@ -23,8 +24,7 @@ class Appointment implements Searchable{
     private LocalDateTime dateStartTime;    
     private LocalDateTime dateEndTime;    
     
-    private final String filePathToSave = "src/Week12/appointment.txt";
-    
+    static final String FILE_PATH = "Lab/Lab10/appointment.txt";
     public Appointment(int day, int month, int year, int startTime, int endTime){
         this.day = day;
         this.month = month;
@@ -38,7 +38,7 @@ class Appointment implements Searchable{
     public LocalDateTime getDateStartTime() {
         return dateStartTime;
     }
-
+    
     public LocalDateTime getDateEndTime() {
         return dateEndTime;
     }
@@ -53,7 +53,12 @@ class Appointment implements Searchable{
     
     public void saveToFile(){
         try {
-            PrintWriter out = new PrintWriter(new FileWriter(filePathToSave, true));
+            File file = new File(FILE_PATH);
+            boolean needsNewline = file.exists() && file.length() > 0;
+            PrintWriter out = new PrintWriter(new FileWriter(FILE_PATH, true));
+            if (needsNewline) {
+                out.println();
+            }
             out.println(day + "/" + month + "/" + year + "," + startTime + ":" + endTime);
             out.close();
             
@@ -80,7 +85,7 @@ public class L10Q4 {
     
     public static void loadAppointment(){
         try {
-            BufferedReader in = new BufferedReader(new FileReader("WIX1002/Lab/Lab10/appointment.txt"));
+                BufferedReader in = new BufferedReader(new FileReader(Appointment.FILE_PATH));
             String line = "";
                 
             while((line = in.readLine()) != null) {
@@ -141,9 +146,9 @@ public class L10Q4 {
     public static void main(String[] args) {
         loadAppointment();
         display();
-        makeAppointment(1,1,2024,8,15);
-        makeAppointment(2,1,2024,9,15);
-        makeAppointment(2,1,2024,15,16);
+        makeAppointment(9,1,2024,4,5);
+        makeAppointment(8,1,2024,16,20);
+        makeAppointment(7,1,2024,13,16);
 
     }   
 }
