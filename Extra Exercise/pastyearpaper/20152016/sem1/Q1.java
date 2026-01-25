@@ -1,4 +1,4 @@
-import java.util.Scanner;
+//import java.util.Scanner; //java scanner is not used
 
 public class Q1{
     public static void main(String[] args) {
