@@ -1,4 +1,4 @@
-# WIX1002: Data Science - Advanced Calculation & Scenario Analysis
+# WIA1007: Data Science - Advanced Calculation & Scenario Analysis
 
 Difficulty: Master / Data Science
 Topics: Linear Regression, Decision Trees, Statistics, Performance Metrics, Neural Networks, Data Transformation, and Machine Learning Fundamentals.
@@ -151,6 +151,7 @@ Scenario: A researcher proposes a simple linear model $ŷ = 3x + 5$ to predict g
 - A. 2.0
 - B. 4.0
 - C. 6.0
+- D. 8.0
 **Q12. Decision Trees: Weighted Gini Impurity**
 
 Scenario: You are evaluating a split on a dataset of 10 samples. The split creates two child nodes:
@@ -189,7 +190,10 @@ Scenario: A data scientist collects the following sample of 5 exam scores: [80, 
 **Question: Calculate the Sample Variance ($s^2$) for this dataset.**
 (Formula: $s^2 = \frac{\sum (x_i - \bar{x})^2}{n - 1}$)
 
-- A. 50
+- A. 50.0
+- B. 62.5
+- C. 75.0
+- D. 12.5
 **Q15. Performance Metrics: Outlier Sensitivity (MAE vs RMSE)**
 
 Scenario: Two prediction models produce the following absolute errors for 4 instances:
@@ -253,7 +257,7 @@ Scenario: You run an ANOVA test to compare 3 different groups.
 - A. 0.6
 - B. 1.2
 - C. 6.0
-- C. 6.0
+- D. 12.0
 D. 10.0
 
 **Q20. Regression: Coefficient of Determination ($R^2$)**
@@ -387,7 +391,7 @@ Scenario:
 - A. 0.4
 - B. 0.6
 - C. 0.2
-- A. 5.0
+- D. 0.8
 **Q29. Clustering: Euclidean Distance in 3D Space**
 
 Scenario: In a K-Means clustering algorithm, you calculate the distance between a data point $P(1, 2, 2)$ and a centroid $C(4, 6, 2)$.
@@ -413,9 +417,6 @@ Scenario: You are using Gradient Descent.
 - C. 2.5
 - D. 0.0
 
-## A: $Z = (6900 - 4500) / 800 = 2400 / 800 = 3.0$. Since $3.0 > 2.5$, it is an outlier.
-
-A: Squared errors: $(5-4)^2=1, (3-3)^2=0, (8-10)^2=4$. Mean Squared Error = $(1+0+4)/3 = 1.66$. $\sqrt{1.66} \approx 1.29$.
 ## Answer Key & Explanations
 
 **Q1.** $y = (1200 \times 6) + 30000 = 7200 + 30000 = 37200$. Range is $37200 \pm 2500$. **Answer: A**
