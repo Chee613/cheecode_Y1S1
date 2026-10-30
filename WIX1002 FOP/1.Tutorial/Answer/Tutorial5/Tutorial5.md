@@ -31,9 +31,11 @@ int [][] num= new int [6][2];
 ### e. Initialize an array with the following value:
 #
 ```bash
-int [][] num={{6,9},
-             {2,5},
-             {4,6}};
+int [][] num = {
+    {6, 9},
+    {2, 5},
+    {4, 6}
+};
 ```
 ### f. After initialize the array, modify the value of the above array 
 #
