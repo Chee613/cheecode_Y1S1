@@ -1,0 +1,21 @@
+# Compiled Java class files
+*.class
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Office & temporary lock files
+~$*
+~*
+*.tmp
+
+# OS & Editor metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Internal agent scratchpads & working specs
+docs/superpowers/
+.superpowers/
