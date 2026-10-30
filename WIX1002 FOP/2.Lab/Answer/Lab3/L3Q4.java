@@ -9,11 +9,11 @@ public class L3Q4{
 
         for(int i=0;i<2;i++){
             
-            score1=rd.nextInt(7);
+            score1=rd.nextInt(6)+1;
             sum1+=score1;
             System.out.printf("The value of dice for round %d for player 1 is %d (score: %d) %n ",i+1,score1,sum1);
 
-            score2=rd.nextInt(7);
+            score2=rd.nextInt(6)+1;
             sum2+=score2;
             System.out.printf("The value of dice for round %d for player 2 is %d (score: %d) %n",i+1,score2,sum2);
 

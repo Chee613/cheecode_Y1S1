@@ -23,7 +23,7 @@ public class L2Q6 {
         // TODO code application logic here
         Scanner input=new Scanner(System.in);
         System.out.print("Enter the amount of water in gram: ");
-        double M=input.nextInt()/1000;
+        double M=input.nextDouble()/1000.0;
         System.out.print("Enter the initial temperature in Fahrenheit:");
         double initialtemp=convertor(input.nextDouble());
         System.out.print("Enter the final temperature in Fahrenheit:");

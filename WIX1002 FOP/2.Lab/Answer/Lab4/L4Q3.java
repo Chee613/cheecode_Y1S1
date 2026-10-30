@@ -31,7 +31,7 @@ public class L4Q3{
         }
 
         average=(double)sum/n;
-        double sd=Math.sqrt((sums2-(sum*sum)/n)/(n-1));
+        double sd=Math.sqrt((sums2 - (double)(sum*sum)/n)/(n-1));
 
         System.out.println("\nSum of all nuumbers: "+(double)sum);
         System.out.println("Minimum Score: "+min);

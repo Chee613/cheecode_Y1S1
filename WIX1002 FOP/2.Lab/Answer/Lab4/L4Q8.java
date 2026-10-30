@@ -6,14 +6,14 @@ public class L4Q8{
 
         int freq=rd.nextInt(26)+1;
         System.out.printf("The first %d prime number :",freq);
-        int ct=0;
-        for(int i=0;i<=100;i++){
-            if(ct!=freq){
-                if(isPrime(i)){
-                    System.out.print(i+", ");
-                    ct++;
-                }
+        int ct = 0;
+        int num = 2;
+        while(ct < freq){
+            if(isPrime(num)){
+                System.out.print(num + (ct == freq - 1 ? "" : ", "));
+                ct++;
             }
+            num++;
         }
     }
     private static boolean isPrime(int n) {

@@ -18,7 +18,7 @@ public class L6Q4 {
             num1=b;
         }
         else{
-            System.out.println("Their Greatest Common Divisor is 1");
+            System.out.println("Their Greatest Common Divisor is " + a);
             return;
         }
         int gcd = 1;

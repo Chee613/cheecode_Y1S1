@@ -25,7 +25,7 @@ public class L2Q1 {
         
         System.out.print("Enter a temperature in degree Fahrenheit:");
     double fahrenheit= input.nextDouble();
-    double celcius=(fahrenheit-32)/18;
+    double celcius=(fahrenheit-32)/1.8;
     System.out.printf("The value for %.2fF in degree Celcius is %.2fC%n",fahrenheit,celcius);
     
     

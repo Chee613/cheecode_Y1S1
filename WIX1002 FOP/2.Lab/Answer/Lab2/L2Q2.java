@@ -32,7 +32,7 @@ public class L2Q2 {
         System.out.print("Enter the loan duration in year:");
         double Y=input.nextDouble();
         
-        double M=(P-D)*(1+R*Y/100)/(Y*12);
+        double M=(P-D)*(1+R*Y)/(Y*12);
         System.out.printf("The monthly installment for your car is RM%.2f",M);
         
         
