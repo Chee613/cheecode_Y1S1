@@ -7,14 +7,14 @@
 ### a. Write a static method compare that return true if two objects parameter (Student s, Teacher t) are belongs to the same class. Otherwise return false.
 ```java
 public static boolean compare(Object s, Object t){
-    return s.getClass() == t.getClass()
+    return s.getClass() == t.getClass();
 }
 ```
 
 ### b. Write a static method isClass that return true if the object parameter (Student s) is belong to any descendent class of Person. Otherwise return false.
 ```java
-public static isClass(Object s){
-    return s instanceOf Person;
+public static boolean isClass(Object s){
+    return s instanceof Person;
 }
 ```
 </details>

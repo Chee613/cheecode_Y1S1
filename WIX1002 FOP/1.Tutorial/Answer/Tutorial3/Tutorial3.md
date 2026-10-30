@@ -63,7 +63,7 @@ public class T3Q1d{
             System.out.println(str1+" "+str2);
         }
         else{
-            System.out.println(str2+" "str1);
+            System.out.println(str2+" "+str1);
         }
     }
 }
@@ -85,7 +85,7 @@ public class T3Q1d{
             System.out.println(str1+" "+str2);
         }
         else{
-            System.out.println(str2+" "str1);
+            System.out.println(str2+" "+str1);
         }
     }
 }
@@ -112,7 +112,7 @@ if(x>y>z)
 
 Corrected
 
-if(x>y&&y<z)
+if(x > y && x > z)
     System.out.println("x is the largest number");
 ```
 ## c.
@@ -198,7 +198,7 @@ System.out.println("$$$$$");
 }
 
 Output:
-$$$$$
+(No output is printed because outer condition x > 10 is false for x = 9)
 ```
 </details>
 

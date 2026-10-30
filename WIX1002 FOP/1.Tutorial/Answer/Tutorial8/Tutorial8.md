@@ -81,8 +81,8 @@ class Number{
     }
 }
 
-Number num1 = Number(20);
-Number num1 = Number(40);
+Number num1 = new Number(20);
+Number num2 = new Number(40);
 ```
 </details>
 
@@ -92,8 +92,8 @@ Number num1 = Number(40);
  
 ### a. Define a class Digit.
 ```java
-Class Digit{
-
+class Digit {
+    // Class definition
 }
 ```
 
@@ -127,7 +127,7 @@ public int digitMultiplication() {
 ### e. Create a method that used to display the digit multiplication of the number.
 ```java
 public void displayDigitMultiplication(){
-    System.out.println(digitMultiplication);
+    System.out.println(digitMultiplication());
 }
 ```
 

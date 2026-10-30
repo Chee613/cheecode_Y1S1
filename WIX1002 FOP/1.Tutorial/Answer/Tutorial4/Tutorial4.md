@@ -156,7 +156,7 @@ for ( x==1, y==20; x < y, x++, y-=2);
 
 //correct
 
-for ( int x=1, int y=20; x < y, x++, y-=2);
+for (int x=1, y=20; x < y; x++, y-=2)
     System.out.println(x + " " + y);
 ```
 ## d.
@@ -171,9 +171,9 @@ while(i<10) {
 
 //correct
 
-i =1;
-while(i<10) {
-    if (i==10)
+int i = 1;
+while (i <= 10) {
+    if (i == 10)
         System.out.println("Program End");
     i++;
 }
@@ -188,7 +188,7 @@ while(i<10) {
 public class T4Q3{
     public static void main(String[]args){
 
-        int fn=0,fn1=1;
+        int fn=1, fn1=1;
         int fibonacci;
 
         System.out.println("Fibonacci sequence displayer: ");

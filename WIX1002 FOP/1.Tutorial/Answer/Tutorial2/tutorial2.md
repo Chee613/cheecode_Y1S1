@@ -5,17 +5,18 @@
   
 ### a. In one line using multiple Java statements
   
-```bash
-System.out.print("Faculty");
-System.out.print("of");
-System.out.print("Computer");
-System.out.print("Science");
-System.out.print("and");
+```java
+System.out.print("Faculty ");
+System.out.print("of ");
+System.out.print("Computer ");
+System.out.print("Science ");
+System.out.print("and ");
+System.out.print("Information ");
 System.out.print("Technology");
 ```
 ### b. In multiple lines using one Java statement
-```bash
-System.out.println("Faculty\n of\n Computer\n Science\n and\n Information\n Technology\n"); 
+```java
+System.out.println("Faculty\nof\nComputer\nScience\nand\nInformation\nTechnology"); 
 ```
 </details>
 
@@ -64,7 +65,7 @@ a. int matric_number;
 b. final double pi=3.142;
 c. boolean M=false;
 d. long P= 8800000000L;
-e. char letter= ‘U’;
+e. char letter= 'U';
 f. final String PRO= "Java";
 
 ```
@@ -83,7 +84,7 @@ System.out.println("The amount is " + AMOUNT);
 
 ### Corrected answer
 ```bash
-double AMOUNT= "32.5";
+double AMOUNT = 32.5;
 AMOUNT +=10;
 System.out.println("The amount is "+ AMOUNT);
 ```
@@ -148,7 +149,7 @@ contact= keyboard.next();
 ##
 
 ```bash
-import java.util.Scanner 
+import java.util.Scanner;
 
 public class circumference{
 
@@ -174,7 +175,7 @@ public class circumference{
 ##
 
 ```bash
-import java.util.Scanner 
+import java.util.Scanner;
 
 public class circumference{
 

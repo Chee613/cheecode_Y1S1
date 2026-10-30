@@ -98,14 +98,14 @@ public static void letter_digit_freq(String sentence){
 import java.util.Random;
 
 public static void main(String[]args){
-    int[]random= new int[10];
-    randomGenerator();
+    int[] random = new int[10];
+    randomGenerator(random);
 }
 
-public static void randomGenerator(){
-    Random rd= new Random();
-    for(int i=0;i<10;i++){
-        random[i]=rd.nextInt(101);
+public static void randomGenerator(int[] random){
+    Random rd = new Random();
+    for(int i = 0; i < random.length; i++){
+        random[i] = rd.nextInt(101);
     }
 }
 ```
@@ -127,8 +127,8 @@ public static double circumference(double radius){
 
 import java.util.Random;
 
-public static int randowTwice(){
-    random rd= new Random();
+public static int randomTwice(){
+    Random rd = new Random();
     while(true){
         int num1=rd.nextInt(10);
         int num2=rd.nextInt(10);
@@ -141,8 +141,8 @@ public static int randowTwice(){
 
 import java.util.Random;
 
-public static int randowTwice(){
-    random rd= new Random();
+public static int randomTwice(){
+    Random rd = new Random();
     int[]numList= new int[11];
 
     while(true){
@@ -172,24 +172,24 @@ public class T6Q2{
             num[i]=input.nextInt();
         }
 
-        decereasing(num);
+        decreasing(num);
     }
 
-    public static void decreasing(int[]num){
-
-        for(int i=0;i<num.length-1;i++)
-            for(int j=0;j<num.length-i-1;j++){
-                if(num[j]<num[j+1]){
-                    int temp=num[j];
-                    num[j]=num[j+1];
-                    num[j+1]=temp;
+    public static void decreasing(int[] num){
+        for(int i = 0; i < num.length - 1; i++){
+            for(int j = 0; j < num.length - i - 1; j++){
+                if(num[j] < num[j+1]){
+                    int temp = num[j];
+                    num[j] = num[j+1];
+                    num[j+1] = temp;
                 }
             }
         }
 
-        for(int i=0;i<num.length;i++){
-            System.out.print(num[i]);
+        for(int i = 0; i < num.length; i++){
+            System.out.print(num[i] + " ");
         }
+        System.out.println();
     }
 }
 ```

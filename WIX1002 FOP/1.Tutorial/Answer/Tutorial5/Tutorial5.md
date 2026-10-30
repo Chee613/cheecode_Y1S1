@@ -12,7 +12,7 @@ float []num= new float [12];
 ```bash
 char []alphabet= new char [5];
 for (int i=0; i<alphabet.length; i++){
-    char[i]=(char)('A'+i);
+    alphabet[i]=(char)('A'+i);
 }
 for (char c:alphabet){
     System.out.print(c+" ");
@@ -69,14 +69,14 @@ String[] code = {"AAA", "AAB", "AAC", "AAD"};
 ```bash
 \\wrong
 
-int[] num = new num[10];
+int[] num = new int[10];
 for(int k=0; k<=num.length(); k++)
     sum+=num;
 
 \\correct
 
-int[] num = new num[10];
-for(int k=0; k<num.length(); k++)
+int[] num = new int[10];
+for(int k=0; k<num.length; k++)
     sum+=num [k];
 ```
 
@@ -140,12 +140,12 @@ marks[4]=31
 
 #
 ```bash
-String sentence ="The most delicious food is the pizza"
+String sentence = "The most delicious food is the pizza";
 String []arrSentence= sentence.split(" ");
 
 int freqThe=0;
 for (String c : arrSentence){
-    if (c.equalsIgnoreCase("the")){
+    if (c.equals("the")){
         freqThe++;
     }
 }
@@ -158,7 +158,7 @@ for (String c : arrSentence){
 
 #
 ```bash
-String sentence ="The most delicious food is the pizza";
+String sentence = "The most delicious food is the pizza";;
 String []arrSentence= sentence.split(" ");
 for(int i=arrSentence.length-1;i>=0;i--){
 

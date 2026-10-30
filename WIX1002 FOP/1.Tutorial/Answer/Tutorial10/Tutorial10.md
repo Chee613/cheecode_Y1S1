@@ -28,21 +28,20 @@ class BulkDiscount extends DiscountPolicy {
     }
 
     public double computeDiscount(int count, double itemCost){
-        // check if the number of item more than minimum
+        // returns discount amount if count exceeds minimum, else 0
         if(count > minimum) {
-            return itemCost * count * (1.0 - discountRate);
+            return itemCost * count * discountRate;
         }
-        // else return no discount price
-        return itemCost * count;
+        return 0;
     }
 }
 
 class OtherDiscount extends DiscountPolicy {
     public double computeDiscount(int count, double itemCost){
-        if(count > 8)           return 0.7 * count * itemCost; // 30% discount
-        else if(count >= 6)     return 0.8 * count * itemCost; // 20% discount
-        else if(count >= 3)     return 0.9 * count * itemCost; // 10% discount
-        else                    return count * itemCost;
+        if(count > 8)           return 0.30 * count * itemCost; // 30% discount
+        else if(count >= 6)     return 0.20 * count * itemCost; // 20% discount
+        else if(count >= 3)     return 0.10 * count * itemCost; // 10% discount
+        else                    return 0;
     }
 }
 
@@ -59,9 +58,8 @@ class CombineDiscount extends DiscountPolicy {
         double discountPolicy1 = policy1.computeDiscount(count, itemCost);
         double discountPolicy2 = policy2.computeDiscount(count, itemCost);
 
-        if(discountPolicy1 > discountPolicy2)
-            return discountPolicy2; // mean policy2 more discount
-        return discountPolicy1;
+        // Returns maximum discount value between the two policies
+        return Math.max(discountPolicy1, discountPolicy2);
     }
 }
 
